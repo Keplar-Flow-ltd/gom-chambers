@@ -1,0 +1,176 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAIA Asset Library</title><style>
+:root{
+  --forest:#0F3D2E; --forest-2:#145038; --forest-9:#0A2A1F; --forest-05:#EAF1ED;
+  --gold:#D4A24C; --gold-3:#E4BE7A; --gold-7:#9A742E; --gold-05:#FAF2DD;
+  --navy:#0F2A43; --navy-2:#153A5C; --navy-05:#E9EFF5;
+  --paper:#FBFAF7; --card:#FFFFFF; --ink:#1F1C16; --muted:#5C5648; --faint:#8A8474;
+  --line:#E2DCCD; --line-2:#CFC6B0;
+  --ok:#EDF3EC; --ok-t:#3E7A57; --ok-b:#448361;
+  --warn:#FAEBDD; --warn-t:#C25E0B; --warn-b:#D9730D;
+  --bad:#FDEBEC; --bad-t:#C33F3A; --bad-b:#D44E49;
+  --info:#E7F3F8; --info-t:#2A6E96; --info-b:#327DA9;
+  --font-sans:Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --font-legal:'Spectral',Georgia,'Times New Roman',serif;
+  --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px; --sp-6:32px; --sp-7:48px; --sp-8:64px;
+  --r-sm:8px; --r-md:12px; --r-lg:16px; --r-xl:22px; --r-pill:999px;
+  --sh-1:0 1px 2px rgba(31,28,22,.05),0 1px 3px rgba(31,28,22,.05);
+  --sh-2:0 6px 18px -8px rgba(15,61,46,.18),0 2px 6px -2px rgba(31,28,22,.06);
+  --sh-3:0 24px 50px -24px rgba(15,61,46,.35);
+  --wrap:880px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--font-sans);background:var(--paper);color:var(--ink);
+     line-height:1.62;font-size:16px;font-feature-settings:"cv11","ss01";}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:26px 22px 72px}
+a{color:var(--forest-2);text-decoration:none}
+a:hover{text-decoration:underline}
+.mono{font-family:var(--font-mono);font-size:.86em;letter-spacing:-.01em}
+.ico{width:1em;height:1em;display:inline-block;vertical-align:-.14em;fill:none;
+     stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+h2{color:var(--forest);font-size:21px;line-height:1.25;margin:30px 0 10px;letter-spacing:-.01em}
+h2 .ico{color:var(--gold-7);margin-right:8px;width:1.05em;height:1.05em}
+h3{font-size:16px;margin:18px 0 4px;color:var(--forest-9)}
+p{margin:9px 0}
+b,strong{color:var(--forest-9)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);
+      padding:18px 20px;margin:14px 0;box-shadow:var(--sh-1)}
+.callout{border-radius:var(--r-md);padding:14px 18px;margin:14px 0;font-size:15px;
+         border:1px solid transparent}
+.c-ok{background:var(--ok);border-color:#D7E6D6} .c-warn{background:var(--warn);border-color:#F0DBC4}
+.c-bad{background:var(--bad);border-color:#F5D2D3} .c-info{background:var(--info);border-color:#CFE3ED}
+.c-gold{background:var(--gold-05);border-color:#EDDFB8}
+.steps{counter-reset:s;list-style:none;margin:12px 0}
+.steps li{counter-increment:s;position:relative;padding:11px 0 11px 48px;border-bottom:1px dotted var(--line)}
+.steps li:last-child{border-bottom:none}
+.steps li::before{content:counter(s);position:absolute;left:0;top:11px;width:31px;height:31px;
+   border-radius:50%;background:var(--forest);color:#fff;font-weight:700;display:flex;
+   align-items:center;justify-content:center;font-size:14px;font-family:var(--font-mono)}
+.links a{display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);
+   padding:13px 16px;margin:9px 0;color:var(--ink);box-shadow:var(--sh-1);transition:.16s ease}
+.links a:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:var(--sh-2);text-decoration:none}
+.links a b{color:var(--forest)}
+.links a .ico{color:var(--gold-7);margin-right:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;
+      border-radius:var(--r-pill);padding:3px 11px;margin-right:6px;letter-spacing:.01em}
+.pill .ico{width:13px;height:13px;stroke-width:2}
+.p-ok{background:var(--ok);color:var(--ok-t)} .p-warn{background:var(--warn);color:var(--warn-t)}
+.p-bad{background:var(--bad);color:var(--bad-t)} .p-info{background:var(--info);color:var(--info-t)}
+.p-gold{background:var(--gold-05);color:var(--gold-7)}
+footer{margin-top:46px;padding-top:15px;border-top:1px solid var(--line);
+       color:var(--muted);font-size:12.5px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+hr.rule{border:none;border-top:1px solid var(--line);margin:26px 0}
+/* ---------- brand chrome ---------- */
+.brandbar{display:flex;align-items:center;gap:12px}
+.brandmark{width:42px;height:42px;flex:none}
+header.site{border-bottom:2px solid var(--gold);padding:18px 0 15px;margin-bottom:24px}
+header.site h1{font-size:25px;color:var(--forest);letter-spacing:-.02em;line-height:1.15}
+header.site .sub{color:var(--muted);font-size:14px;margin-top:2px}
+nav.bread{font-size:13px;margin:18px 0 4px;color:var(--muted)}
+nav.bread a{color:var(--forest);font-weight:600}
+.hero{margin:0 0 24px;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-2)}
+.hero svg{display:block;width:100%;height:auto}
+@media print{
+  :root{--paper:#fff}
+  body{font-size:11.5pt;background:#fff}
+  .wrap{max-width:none;padding:0}
+  header.site{margin-bottom:14px}
+  a{color:var(--forest);text-decoration:none}
+  .card,.callout,.links a{box-shadow:none}
+  .links a:hover{transform:none}
+  nav.bread,footer .noprint{display:none}
+  h2{page-break-after:avoid}
+  .card,.callout,.steps li{page-break-inside:avoid}
+  .hero{box-shadow:none;border:1px solid var(--line)}
+}
+
+.wrap{--wrap:1080px}</style></head>
+<body><div class="wrap">
+<header class="site"><div class="brandbar">
+  <svg class="brandmark" viewBox="0 0 96 96" aria-hidden="true" style="width:46px;height:46px"><rect width="96" height="96" rx="22" fill="#0F3D2E"/><path d="M65 35.5a19 19 0 1 0 2.5 26.5H55" fill="none" stroke="#D4A24C" stroke-width="8.5" stroke-linecap="round"/></svg>
+  <div><div class="mono" style="color:#9A742E;letter-spacing:3px;font-size:12px">KEPlAR FLOW &#183; CLIENT LIBRARY</div>
+  <h1>GAIA Asset Library</h1><div class="sub">Brand system, covers, icons, plates and cards for every GAIA artifact</div></div>
+</div></header>
+<style>
+.sec{margin-top:44px}
+.sec > h2{font-size:24px;border-bottom:2px solid #D4A24C;padding-bottom:8px}
+.lead{color:#5C5648;max-width:72ch}
+.swgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-top:16px}
+.sw{display:flex;gap:14px;align-items:center;padding:12px 14px;border:1px solid #E2DCCD;border-radius:var(--r-md);background:var(--card)}
+.chip{width:46px;height:46px;border-radius:10px;border:1px solid #E2DCCD;flex:none}
+.sw b{font-size:15px} .sw .use{font-size:12.5px;color:#5C5648} .sw .mono{color:#9A742E;font-size:12px}
+.icgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:10px;margin-top:16px}
+.ic{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 6px;border:1px solid #E2DCCD;border-radius:var(--r-md);background:var(--card);color:#0F3D2E}
+.ic span{font-size:11px;color:#5C5648}
+.figgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:16px;margin-top:16px}
+.fig{margin:0;border:1px solid #E2DCCD;border-radius:var(--r-md);overflow:hidden;background:var(--card)}
+.fig img{display:block;width:100%;height:auto} .fig figcaption{padding:8px 12px;color:#5C5648;font-size:12px}
+.card-fig{grid-column:span 2} @media(max-width:900px){.card-fig{grid-column:auto}}
+.figgrid.widelist{grid-template-columns:1fr}
+.type-scale .row{display:flex;align-items:baseline;gap:18px;padding:10px 0;border-bottom:1px dotted #E2DCCD}
+.type-scale .tag{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;color:#9A742E;width:130px;flex:none}
+.legal{font-family:'Spectral',Georgia,'Times New Roman',serif;}
+.on-dark{background:#0F3D2E;border-radius:var(--r-lg);padding:22px;display:flex;gap:26px;align-items:center;flex-wrap:wrap;margin-top:14px}
+</style>
+<div class="callout c-gold"><svg class="ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M12 3l2.2 1.6 2.7-.3.9 2.6 2.2 1.6-.9 2.5.9 2.5-2.2 1.6-.9 2.6-2.7-.3L12 21l-2.2-1.6-2.7.3-.9-2.6L4 15.5l.9-2.5L4 10.5l2.2-1.6.9-2.6 2.7.3z"/><path d="M8.6 12l2.3 2.3L15.5 9.6"/></svg> <b>GAIA Asset Library</b> — the branded, unified kit for every client-facing GAIA artifact.
+Locked direction: <b>GAIA Forest</b> + <b>Gold</b> on warm neutrals, blueprint-navy accents. Inter (UI) · JetBrains Mono (IDs) · serif for legal documents only.
+Tone: legal-practice formal, warm, plain English — never cute, never cluttered.</div>
+
+<section class="sec"><h2><svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M12 3l2.2 1.6 2.7-.3.9 2.6 2.2 1.6-.9 2.5.9 2.5-2.2 1.6-.9 2.6-2.7-.3L12 21l-2.2-1.6-2.7.3-.9-2.6L4 15.5l.9-2.5L4 10.5l2.2-1.6.9-2.6 2.7.3z"/><path d="M8.6 12l2.3 2.3L15.5 9.6"/></svg>Brand &amp; logo</h2>
+<p class="lead">A single seal carries the brand: a gold G on forest with a centred node. Lockups scale from app mark to letterhead. Clearspace = the height of the G's stroke on all sides.</p>
+<div style="display:flex;gap:26px;align-items:center;flex-wrap:wrap;margin-top:16px">
+  <svg width="72" height="72" viewBox="0 0 96 96"><rect width="96" height="96" rx="22" fill="#0F3D2E"/><path d="M65 35.5a19 19 0 1 0 2.5 26.5H55" fill="none" stroke="#D4A24C" stroke-width="8.5" stroke-linecap="round"/></svg>
+  <svg width="72" height="72" viewBox="0 0 96 96"><rect width="96" height="96" rx="22" fill="#D4A24C"/><path d="M65 35.5a19 19 0 1 0 2.5 26.5H55" fill="none" stroke="#0F3D2E" stroke-width="8.5" stroke-linecap="round"/></svg>
+  <img src="assets/logo/gaia-wordmark.svg" alt="GAIA wordmark" style="height:64px">
+</div>
+<div class="on-dark">
+  <svg width="56" height="56" viewBox="0 0 96 96"><path d="M65 35.5a19 19 0 1 0 2.5 26.5H55" fill="none" stroke="#D4A24C" stroke-width="8.5" stroke-linecap="round"/></svg>
+  <img src="assets/logo/gaia-lockup-reverse.svg" alt="GAIA lockup on dark" style="height:70px">
+</div></section>
+
+<section class="sec"><h2><svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M3 20.5h18"/><rect x="4.6" y="11" width="3.2" height="7.6" rx="1"/><rect x="10.4" y="5.2" width="3.2" height="13.4" rx="1"/><rect x="16.2" y="13.4" width="3.2" height="5.2" rx="1"/></svg>Colour</h2>
+<p class="lead">Max four semantic colours + one accent. Dominant forest, sharp gold accent — no timid even-spread palettes.</p>
+<div class="swgrid"><div class='sw'><span class='chip' style='background:#0F3D2E'></span><div><b>Forest</b><div class='mono'>#0F3D2E</div><div class='use'>Primary brand &#183; headers, rules, primary actions</div></div></div><div class='sw'><span class='chip' style='background:#0A2A1F'></span><div><b>Forest Deep</b><div class='mono'>#0A2A1F</div><div class='use'>Depth &#183; gradients, dark surfaces</div></div></div><div class='sw'><span class='chip' style='background:#D4A24C'></span><div><b>Gold</b><div class='mono'>#D4A24C</div><div class='use'>Accent &#183; seals, rules, highlights</div></div></div><div class='sw'><span class='chip' style='background:#9A742E'></span><div><b>Gold Ink</b><div class='mono'>#9A742E</div><div class='use'>Accessible gold text on light</div></div></div><div class='sw'><span class='chip' style='background:#0F2A43'></span><div><b>Blueprint Navy</b><div class='mono'>#0F2A43</div><div class='use'>Secondary accent &#183; legal/technical</div></div></div><div class='sw'><span class='chip' style='background:#FBFAF7'></span><div><b>Paper</b><div class='mono'>#FBFAF7</div><div class='use'>Warm neutral page background</div></div></div><div class='sw'><span class='chip' style='background:#1F1C16'></span><div><b>Ink</b><div class='mono'>#1F1C16</div><div class='use'>Body text</div></div></div><div class='sw'><span class='chip' style='background:#5C5648'></span><div><b>Muted</b><div class='mono'>#5C5648</div><div class='use'>Secondary text</div></div></div><div class='sw'><span class='chip' style='background:#E2DCCD'></span><div><b>Line</b><div class='mono'>#E2DCCD</div><div class='use'>Hairline borders</div></div></div></div>
+<p class="lead" style="margin-top:16px">Semantic states (background / text pairs):</p>
+<p><span class='pill p-ok'><svg class="ico" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg> Verified / secure</span><span class='pill p-warn'><svg class="ico" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" focusable="false"><path d="M6.2 9.2a5.8 5.8 0 0 1 11.6 0c0 4.6 1.9 5.9 1.9 5.9H4.3s1.9-1.3 1.9-5.9z"/><path d="M10 19.4a2 2 0 0 0 4 0"/></svg> Attention / pending</span><span class='pill p-bad'><svg class="ico" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" focusable="false"><path d="M6.2 9.2a5.8 5.8 0 0 1 11.6 0c0 4.6 1.9 5.9 1.9 5.9H4.3s1.9-1.3 1.9-5.9z"/><path d="M10 19.4a2 2 0 0 0 4 0"/></svg> Arrears / critical</span><span class='pill p-info'><svg class="ico" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" focusable="false"><path d="M6.2 9.2a5.8 5.8 0 0 1 11.6 0c0 4.6 1.9 5.9 1.9 5.9H4.3s1.9-1.3 1.9-5.9z"/><path d="M10 19.4a2 2 0 0 0 4 0"/></svg> Informational</span></p></section>
+
+<section class="sec"><h2><svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M7 3h7l4.5 4.5V21H7z"/><path d="M14 3v4.6h4.5"/><path d="M10 13h6M10 16.5h4"/></svg>Typography</h2>
+<p class="lead">Inter is the default — locked by the GAIA brand direction. JetBrains Mono carries IDs and references. A serif is reserved strictly for legal-document artifacts.</p>
+<div class="type-scale card">
+  <div class="row"><span class="tag">DISPLAY / 800</span><span style="font-size:40px;font-weight:800;color:#0F3D2E;letter-spacing:-1px">Every lease, every naira.</span></div>
+  <div class="row"><span class="tag">HEADING / 700</span><span style="font-size:24px;font-weight:700;color:#0F3D2E">Which estate carries the risk</span></div>
+  <div class="row"><span class="tag">BODY / 400</span><span style="font-size:16px">Only verified money counts in balances, charts and dashboards.</span></div>
+  <div class="row"><span class="tag">MONO / IDs</span><span class="mono" style="font-size:15px">TEN-003 &#183; P-014 &#183; REF-DUMMY-014 &#183; &#8358;745,000</span></div>
+  <div class="row"><span class="tag">LEGAL SERIF</span><span class="legal" style="font-size:19px">Notice of rent arrears &#8212; drafted, served, logged.</span></div>
+</div></section>
+
+<section class="sec"><h2><svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="7" height="7" rx="1.4"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.4"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.4"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.4"/></svg>Icon set</h2>
+<p class="lead">Monochrome line icons, 1.7px stroke, currentColor, 24&#215;24. Six database glyphs plus roles and UI marks. No emoji anywhere in the library.</p>
+<div class="icgrid"><div class='ic' title="estates"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path d="M3 11l9-7 9 7"/><path d="M5.5 9.6V20h13V9.6"/><path d="M10 20v-5h4v5"/></svg><span class='mono'>estates</span></div><div class='ic' title="units"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="7" height="7" rx="1.4"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.4"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.4"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.4"/></svg><span class='mono'>units</span></div><div class='ic' title="tenants"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="3.3"/><path d="M5.4 20a6.6 6.6 0 0 1 13.2 0"/></svg><span class='mono'>tenants</span></div><div class='ic' title="tenancies"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path d="M7 3h7l4.5 4.5V21H7z"/><path d="M14 3v4.6h4.5"/><path d="M10 12.5h6M10 16h4"/></svg><span class='mono'>tenancies</span></div><div class='ic' title="payments"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><rect x="2.5" y="6" width="19" height="12" rx="2.2"/><circle cx="12" cy="12" r="2.7"/><path d="M6 9.4v5.2M18 9.4v5.2"/></svg><span class='mono'>payments</span></div><div class='ic' title="tasks"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="3.2"/><path d="M8 12.4l2.6 2.6L16.2 9.4"/></svg><span class='mono'>tasks</span></div><div class='ic' title="role-principal"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path d="M4 8.5l4 3.8L12 6l4 6.3 4-3.8V17.5H4z"/><path d="M4 20h16"/></svg><span class='mono'>role-principal</span></div><div class='ic' title="role-pa"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.6"/><path d="M15.2 8.8l-2 4.4-4.4 2 2-4.4z"/></svg><span class='mono'>role-pa</span></div><div class='ic' title="role-legal"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path d="M12 4v16M6.5 20h11M4 8h16"/><path d="M8.2 8l-2.8 4.6a2.9 2.9 0 0 0 5.6 0z"/><path d="M15.8 8l2.8 4.6a2.9 2.9 0 0 1-5.6 0z"/></svg><span class='mono'>role-legal</span></div><div class='ic' title="role-field"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4l-5 5a1.45 1.45 0 0 0 2.05 2.05l5-5a4 4 0 0 0 5.35-5.35l-2.3 2.3-2.05-2.05z"/></svg><span class='mono'>role-field</span></div><div class='ic' title="calendar"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><rect x="3" y="4.6" width="18" height="16" rx="2.6"/><path d="M3 9.4h18M8 3v3.4M16 3v3.4"/></svg><span class='mono'>calendar</span></div><div class='ic' title="timeline"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path d="M3.5 6.5h9M3.5 12h15M3.5 17.5h6"/><circle cx="16.5" cy="6.5" r="2.1"/><circle cx="12.5" cy="17.5" r="2.1"/></svg><span class='mono'>timeline</span></div><div class='ic' title="chart"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path d="M3 20.5h18"/><rect x="4.6" y="11" width="3.2" height="7.6" rx="1"/><rect x="10.4" y="5.2" width="3.2" height="13.4" rx="1"/><rect x="16.2" y="13.4" width="3.2" height="5.2" rx="1"/></svg><span class='mono'>chart</span></div><div class='ic' title="notice"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path d="M6.2 9.2a5.8 5.8 0 0 1 11.6 0c0 4.6 1.9 5.9 1.9 5.9H4.3s1.9-1.3 1.9-5.9z"/><path d="M10 19.4a2 2 0 0 0 4 0"/></svg><span class='mono'>notice</span></div><div class='ic' title="shield"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5.2c0 4.4-2.9 7.4-7 9-4.1-1.6-7-4.6-7-9V6z"/><circle cx="12" cy="10.8" r="1.6"/><path d="M12 12.4v2.8"/></svg><span class='mono'>shield</span></div><div class='ic' title="seal"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path d="M12 3l2.2 1.6 2.7-.3.9 2.6 2.2 1.6-.9 2.5.9 2.5-2.2 1.6-.9 2.6-2.7-.3L12 21l-2.2-1.6-2.7.3-.9-2.6L4 15.5l.9-2.5L4 10.5l2.2-1.6.9-2.6 2.7.3z"/><path d="M8.6 12l2.3 2.3L15.5 9.6"/></svg><span class='mono'>seal</span></div><div class='ic' title="ai"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M18.5 16.5l.7 1.9 1.9.7-1.9.7-.7 1.9-.7-1.9-1.9-.7 1.9-.7z"/></svg><span class='mono'>ai</span></div><div class='ic' title="link"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path d="M10 14a3.6 3.6 0 0 0 5.1 0l2.6-2.6a3.6 3.6 0 0 0-5.1-5.1l-1.3 1.3"/><path d="M14 10a3.6 3.6 0 0 0-5.1 0L6.3 12.6a3.6 3.6 0 0 0 5.1 5.1l1.3-1.3"/></svg><span class='mono'>link</span></div><div class='ic' title="drive"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path d="M3 7.2A2.2 2.2 0 0 1 5.2 5h3.6l2 2h8A2.2 2.2 0 0 1 21 9.2v7.6A2.2 2.2 0 0 1 18.8 19H5.2A2.2 2.2 0 0 1 3 16.8z"/></svg><span class='mono'>drive</span></div><div class='ic' title="clock"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.8"/><path d="M12 6.8V12l3.4 2"/></svg><span class='mono'>clock</span></div><div class='ic' title="search"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.6"/><path d="M20 20l-4.2-4.2"/></svg><span class='mono'>search</span></div><div class='ic' title="print"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path d="M6.5 9V3.5h11V9"/><rect x="3" y="9" width="18" height="7.6" rx="2"/><path d="M6.5 14h11v6.5h-11z"/></svg><span class='mono'>print</span></div><div class='ic' title="download"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path d="M12 3.5v11"/><path d="M8 11l4 4 4-4"/><path d="M4 20.5h16"/></svg><span class='mono'>download</span></div><div class='ic' title="arrow"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path d="M4 12h14"/><path d="M12.5 6.5l5.5 5.5-5.5 5.5"/></svg><span class='mono'>arrow</span></div><div class='ic' title="check"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span class='mono'>check</span></div><div class='ic' title="scale-legal"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path d="M6 4h12M12 4v16M8 20h8"/><path d="M6 4L4 10h4zM18 4l-2 6h4z"/></svg><span class='mono'>scale-legal</span></div><div class='ic' title="document"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><path d="M7 3h7l4.5 4.5V21H7z"/><path d="M14 3v4.6h4.5"/><path d="M10 13h6M10 16.5h4"/></svg><span class='mono'>document</span></div><div class='ic' title="key"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><circle cx="8.5" cy="8.5" r="3.8"/><path d="M11.2 11.2L19 19M16 16l1.8-1.8M13.9 13.9l1.8-1.8"/></svg><span class='mono'>key</span></div></div></section>
+
+<section class="sec"><h2><svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M3 20.5h18"/><rect x="4.6" y="11" width="3.2" height="7.6" rx="1"/><rect x="10.4" y="5.2" width="3.2" height="13.4" rx="1"/><rect x="16.2" y="13.4" width="3.2" height="5.2" rx="1"/></svg>Cover system</h2>
+<p class="lead">Five reproducible themes at 3000&#215;1200 (print-ready). A gold spine-rule and seal carry across all of them; each wiki page takes a hero band from the same system.</p>
+<div class="figgrid widelist"><figure class='fig'><img src='assets/covers/gaia-cover-navy-blueprint.svg' alt='navy-blueprint cover' loading='lazy'><figcaption class='mono'>navy-blueprint</figcaption></figure><figure class='fig'><img src='assets/covers/gaia-cover-emerald-executive.svg' alt='emerald-executive cover' loading='lazy'><figcaption class='mono'>emerald-executive</figcaption></figure><figure class='fig'><img src='assets/covers/gaia-cover-charcoal-gold.svg' alt='charcoal-gold cover' loading='lazy'><figcaption class='mono'>charcoal-gold</figcaption></figure><figure class='fig'><img src='assets/covers/gaia-cover-forest-gold.svg' alt='forest-gold cover' loading='lazy'><figcaption class='mono'>forest-gold</figcaption></figure><figure class='fig'><img src='assets/covers/gaia-cover-ivory-minimal.svg' alt='ivory-minimal cover' loading='lazy'><figcaption class='mono'>ivory-minimal</figcaption></figure></div></section>
+
+<section class="sec"><h2><svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M3 20.5h18"/><rect x="4.6" y="11" width="3.2" height="7.6" rx="1"/><rect x="10.4" y="5.2" width="3.2" height="13.4" rx="1"/><rect x="16.2" y="13.4" width="3.2" height="5.2" rx="1"/></svg>Data plates</h2>
+<p class="lead">Chart plates drawn from the frozen QA baseline — arrears by estate (120k / 450k / 475k), collections progress (5,055,000 of 5,800,000), occupancy (6 of 10).</p>
+<div class="figgrid"><figure class='fig'><img src='assets/charts/gaia-chart-arrears-by-estate.svg' alt='gaia-chart-arrears-by-estate.svg' loading='lazy'></figure><figure class='fig'><img src='assets/charts/gaia-chart-collections.svg' alt='gaia-chart-collections.svg' loading='lazy'></figure><figure class='fig'><img src='assets/charts/gaia-chart-occupancy.svg' alt='gaia-chart-occupancy.svg' loading='lazy'></figure></div></section>
+
+<section class="sec"><h2><svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M12 3l2.2 1.6 2.7-.3.9 2.6 2.2 1.6-.9 2.5.9 2.5-2.2 1.6-.9 2.6-2.7-.3L12 21l-2.2-1.6-2.7.3-.9-2.6L4 15.5l.9-2.5L4 10.5l2.2-1.6.9-2.6 2.7.3z"/><path d="M8.6 12l2.3 2.3L15.5 9.6"/></svg>Video title cards</h2>
+<p class="lead">Nine scene frames for the product video, matching the storyboard.</p>
+<div class="figgrid"><figure class='fig card-fig'><img src='assets/cards/gaia-card-01.svg' alt='card 01' loading='lazy'></figure><figure class='fig card-fig'><img src='assets/cards/gaia-card-02.svg' alt='card 02' loading='lazy'></figure><figure class='fig card-fig'><img src='assets/cards/gaia-card-03.svg' alt='card 03' loading='lazy'></figure><figure class='fig card-fig'><img src='assets/cards/gaia-card-04.svg' alt='card 04' loading='lazy'></figure><figure class='fig card-fig'><img src='assets/cards/gaia-card-05.svg' alt='card 05' loading='lazy'></figure><figure class='fig card-fig'><img src='assets/cards/gaia-card-06.svg' alt='card 06' loading='lazy'></figure><figure class='fig card-fig'><img src='assets/cards/gaia-card-07.svg' alt='card 07' loading='lazy'></figure><figure class='fig card-fig'><img src='assets/cards/gaia-card-08.svg' alt='card 08' loading='lazy'></figure><figure class='fig card-fig'><img src='assets/cards/gaia-card-09.svg' alt='card 09' loading='lazy'></figure></div></section>
+
+<section class="sec"><h2><svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M4 12h14"/><path d="M12.5 6.5l5.5 5.5-5.5 5.5"/></svg>Applications</h2>
+<p class="lead">The system applied to the actual client-facing artifacts:</p>
+<div class="links">
+<a href="wiki/index.html"><svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M7 3h7l4.5 4.5V21H7z"/><path d="M14 3v4.6h4.5"/><path d="M10 13h6M10 16.5h4"/></svg><b>GAIA Onboarding Wiki</b> — 13 branded, self-contained pages with covers + print CSS</a>
+<a href="storyboard/V1 GAIA Storyboard.html"><svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M3 20.5h18"/><rect x="4.6" y="11" width="3.2" height="7.6" rx="1"/><rect x="10.4" y="5.2" width="3.2" height="13.4" rx="1"/><rect x="16.2" y="13.4" width="3.2" height="5.2" rx="1"/></svg><b>Video storyboard</b> — 9 scenes, cards + narration</a>
+<a href="demo-day/GAIA-Session-Agenda.html"><svg class="ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><rect x="3" y="4.6" width="18" height="16" rx="2.6"/><path d="M3 9.4h18M8 3v3.4M16 3v3.4"/></svg><b>Demo-day pack</b> — agenda, one-pager, checklist (print-ready)</a>
+</div></section>
+<footer><span>GAIA &#183; Gom Chambers property operations &#183; Keplar Flow Limited &#183; 2026-09-19</span>
+<span class="mono noprint">V1 &#183; locked palette</span></footer>
+</div></body></html>

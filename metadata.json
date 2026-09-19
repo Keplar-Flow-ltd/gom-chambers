@@ -1,0 +1,8 @@
+{
+  "name": "GAIA — Product Film",
+  "description": "Client product film, cinema studio, and interactive showcase for Project GAIA (Gom Chambers × Keplar Flow Limited)",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
