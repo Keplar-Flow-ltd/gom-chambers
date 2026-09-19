@@ -1,0 +1,104 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAIA Demo — One Pager</title><style>
+:root{
+  --forest:#0F3D2E; --forest-2:#145038; --forest-9:#0A2A1F; --forest-05:#EAF1ED;
+  --gold:#D4A24C; --gold-3:#E4BE7A; --gold-7:#9A742E; --gold-05:#FAF2DD;
+  --navy:#0F2A43; --navy-2:#153A5C; --navy-05:#E9EFF5;
+  --paper:#FBFAF7; --card:#FFFFFF; --ink:#1F1C16; --muted:#5C5648; --faint:#8A8474;
+  --line:#E2DCCD; --line-2:#CFC6B0;
+  --ok:#EDF3EC; --ok-t:#3E7A57; --ok-b:#448361;
+  --warn:#FAEBDD; --warn-t:#C25E0B; --warn-b:#D9730D;
+  --bad:#FDEBEC; --bad-t:#C33F3A; --bad-b:#D44E49;
+  --info:#E7F3F8; --info-t:#2A6E96; --info-b:#327DA9;
+  --font-sans:Inter,'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --font-legal:'Spectral',Georgia,'Times New Roman',serif;
+  --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px; --sp-6:32px; --sp-7:48px; --sp-8:64px;
+  --r-sm:8px; --r-md:12px; --r-lg:16px; --r-xl:22px; --r-pill:999px;
+  --sh-1:0 1px 2px rgba(31,28,22,.05),0 1px 3px rgba(31,28,22,.05);
+  --sh-2:0 6px 18px -8px rgba(15,61,46,.18),0 2px 6px -2px rgba(31,28,22,.06);
+  --sh-3:0 24px 50px -24px rgba(15,61,46,.35);
+  --wrap:880px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--font-sans);background:var(--paper);color:var(--ink);
+     line-height:1.62;font-size:16px;font-feature-settings:"cv11","ss01";}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:26px 22px 72px}
+a{color:var(--forest-2);text-decoration:none}
+a:hover{text-decoration:underline}
+.mono{font-family:var(--font-mono);font-size:.86em;letter-spacing:-.01em}
+.ico{width:1em;height:1em;display:inline-block;vertical-align:-.14em;fill:none;
+     stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+h2{color:var(--forest);font-size:21px;line-height:1.25;margin:30px 0 10px;letter-spacing:-.01em}
+h2 .ico{color:var(--gold-7);margin-right:8px;width:1.05em;height:1.05em}
+h3{font-size:16px;margin:18px 0 4px;color:var(--forest-9)}
+p{margin:9px 0}
+b,strong{color:var(--forest-9)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);
+      padding:18px 20px;margin:14px 0;box-shadow:var(--sh-1)}
+.callout{border-radius:var(--r-md);padding:14px 18px;margin:14px 0;font-size:15px;
+         border:1px solid transparent}
+.c-ok{background:var(--ok);border-color:#D7E6D6} .c-warn{background:var(--warn);border-color:#F0DBC4}
+.c-bad{background:var(--bad);border-color:#F5D2D3} .c-info{background:var(--info);border-color:#CFE3ED}
+.c-gold{background:var(--gold-05);border-color:#EDDFB8}
+.steps{counter-reset:s;list-style:none;margin:12px 0}
+.steps li{counter-increment:s;position:relative;padding:11px 0 11px 48px;border-bottom:1px dotted var(--line)}
+.steps li:last-child{border-bottom:none}
+.steps li::before{content:counter(s);position:absolute;left:0;top:11px;width:31px;height:31px;
+   border-radius:50%;background:var(--forest);color:#fff;font-weight:700;display:flex;
+   align-items:center;justify-content:center;font-size:14px;font-family:var(--font-mono)}
+.links a{display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);
+   padding:13px 16px;margin:9px 0;color:var(--ink);box-shadow:var(--sh-1);transition:.16s ease}
+.links a:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:var(--sh-2);text-decoration:none}
+.links a b{color:var(--forest)}
+.links a .ico{color:var(--gold-7);margin-right:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;
+      border-radius:var(--r-pill);padding:3px 11px;margin-right:6px;letter-spacing:.01em}
+.pill .ico{width:13px;height:13px;stroke-width:2}
+.p-ok{background:var(--ok);color:var(--ok-t)} .p-warn{background:var(--warn);color:var(--warn-t)}
+.p-bad{background:var(--bad);color:var(--bad-t)} .p-info{background:var(--info);color:var(--info-t)}
+.p-gold{background:var(--gold-05);color:var(--gold-7)}
+footer{margin-top:46px;padding-top:15px;border-top:1px solid var(--line);
+       color:var(--muted);font-size:12.5px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+hr.rule{border:none;border-top:1px solid var(--line);margin:26px 0}
+/* ---------- brand chrome ---------- */
+.brandbar{display:flex;align-items:center;gap:12px}
+.brandmark{width:42px;height:42px;flex:none}
+header.site{border-bottom:2px solid var(--gold);padding:18px 0 15px;margin-bottom:24px}
+header.site h1{font-size:25px;color:var(--forest);letter-spacing:-.02em;line-height:1.15}
+header.site .sub{color:var(--muted);font-size:14px;margin-top:2px}
+nav.bread{font-size:13px;margin:18px 0 4px;color:var(--muted)}
+nav.bread a{color:var(--forest);font-weight:600}
+.hero{margin:0 0 24px;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-2)}
+.hero svg{display:block;width:100%;height:auto}
+@media print{
+  :root{--paper:#fff}
+  body{font-size:11.5pt;background:#fff}
+  .wrap{max-width:none;padding:0}
+  header.site{margin-bottom:14px}
+  a{color:var(--forest);text-decoration:none}
+  .card,.callout,.links a{box-shadow:none}
+  .links a:hover{transform:none}
+  nav.bread,footer .noprint{display:none}
+  h2{page-break-after:avoid}
+  .card,.callout,.steps li{page-break-inside:avoid}
+  .hero{box-shadow:none;border:1px solid var(--line)}
+}
+
+@media print{@page{size:A4;margin:16mm}}
+</style></head>
+<body><div class="wrap">
+<header class="site"><div class="brandbar">
+  <svg class="brandmark" viewBox="0 0 96 96" aria-hidden="true"><rect width="96" height="96" rx="22" fill="#0F3D2E"/><path d="M65 35.5a19 19 0 1 0 2.5 26.5H55" fill="none" stroke="#D4A24C" stroke-width="8.5" stroke-linecap="round"/></svg>
+  <div><div class="mono" style="color:#9A742E;letter-spacing:3px;font-size:12px">GAIA &AMP;#183; DEMO DAY</div>
+  <h1>GAIA Demo — One Pager</h1><div class="sub">The ten stops, in order &#183; for the client's hands</div></div>
+</div></header>
+
+<div class="callout c-info"><svg class="ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M3 20.5h18"/><rect x="4.6" y="11" width="3.2" height="7.6" rx="1"/><rect x="10.4" y="5.2" width="3.2" height="13.4" rx="1"/><rect x="16.2" y="13.4" width="3.2" height="5.2" rx="1"/></svg> <b>The ten stops</b> — the demo in order. Every expected value is verified dummy-data arithmetic. If any screen deviates, pause and say “let me check that” — never demo a wrong number.</div>
+<div class='card' style='padding:12px 16px'><span class='pill p-gold'>1</span><b>GAIA Portal</b><div style='margin-top:4px;font-size:14px'>Land. 30s of silence — let the cover, KPI cards and charts speak. <span class='mono'>&#8358;1,800,000 &#183; &#8358;5,055,000 &#183; &#8358;745,000</span></div></div><div class='card' style='padding:12px 16px'><span class='pill p-gold'>2</span><b>The P-014 cascade — the hero moment</b><div style='margin-top:4px;font-size:14px'>Verify &#8358;200,000 &#8594; arrears &#8358;745,000&#8594;&#8358;545,000, Beta 450k&#8594;250k, portfolio 1,045k&#8594;845k. Every screen, same second.</div></div><div class='card' style='padding:12px 16px'><span class='pill p-gold'>3</span><b>Principal Portal</b><div style='margin-top:4px;font-size:14px'>Escalation queue + rent &amp; expiry calendar + portfolio timeline. “When is anything due” — answered.</div></div><div class='card' style='padding:12px 16px'><span class='pill p-gold'>4</span><b>Calendar &amp; Accountability Hub</b><div style='margin-top:4px;font-size:14px'>Lease ends, task deadlines, payment due dates; responsibility boards. Nothing is unowned.</div></div><div class='card' style='padding:12px 16px'><span class='pill p-gold'>5</span><b>PA Portal</b><div style='margin-top:4px;font-size:14px'>Pending-verification worklist + triage + cleaning grid — the PA's daily reality.</div></div><div class='card' style='padding:12px 16px'><span class='pill p-gold'>6</span><b>Legal Portal</b><div style='margin-top:4px;font-size:14px'>Renewal monitor + swimlane timeline + case board (TEN-008 dispute visible).</div></div><div class='card' style='padding:12px 16px'><span class='pill p-gold'>7</span><b>Field Portal (phone!) — the fastest wow</b><div style='margin-top:4px;font-size:14px'>Submit a live incident &#8594; it appears in PA triage in front of them. The fastest wow.</div></div><div class='card' style='padding:12px 16px'><span class='pill p-gold'>8</span><b>Security posture</b><div style='margin-top:4px;font-size:14px'>Backend isolation, role boundaries, the staged hardening page.</div></div><div class='card' style='padding:12px 16px'><span class='pill p-gold'>9</span><b>Notion AI live</b><div style='margin-top:4px;font-size:14px'>PA asks a natural question; AI answers from the workspace + GAIA bridge.</div></div><div class='card' style='padding:12px 16px'><span class='pill p-gold'>10</span><b>Permission proof</b><div style='margin-top:4px;font-size:14px'>Open a Field-restricted surface; show “no access” is real.</div></div>
+<div class="callout c-gold" style="margin-top:18px"><svg class="ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg> <b>Close:</b> 6 databases, 53 dummy records, every figure traceable. The staging you watched is the production system, minus your real data.</div><footer><span>GAIA &#183; Gom Chambers &#215; Keplar Flow Limited &#183; 2026-09-19</span>
+<span class="mono noprint">print-ready &#183; A4</span></footer>
+</div></body></html>
