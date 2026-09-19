@@ -13,6 +13,9 @@ app.use('/source', express.static(path.join(__dirname, 'source')));
 app.use('/wiki', express.static(path.join(__dirname, 'wiki')));
 app.use('/demo-day', express.static(path.join(__dirname, 'demo-day')));
 app.use('/storyboard', express.static(path.join(__dirname, 'storyboard')));
+app.use('/downloads', express.static(path.join(__dirname, 'downloads'), {
+  setHeaders(res){ res.setHeader('Content-Disposition', 'attachment'); }
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Specific asset library route
